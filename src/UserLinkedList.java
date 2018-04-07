@@ -51,7 +51,14 @@ public class UserLinkedList<T> {
     }
 
     public boolean remove(Object element) {
+        if (!contains(element))
+            return false;
         if (element == null) {
+            if (first.next == null) {
+                first = null;
+                size--;
+                return true;
+            }
             for (Node<T> node = first; node.next != null; node = node.next) {
                 if (first.value == null)
                     return removeFirst();
@@ -59,6 +66,11 @@ public class UserLinkedList<T> {
                     return unlink(node);
             }
         } else {
+            if (first.next == null) {
+                first = null;
+                size--;
+                return true;
+            }
             for (Node<T> node = first; node.next != null; node = node.next) {
                 if (element.equals(first.value))
                     return removeFirst();
