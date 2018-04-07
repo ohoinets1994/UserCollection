@@ -1,28 +1,8 @@
-import java.util.Collections;
-import java.util.TreeSet;
 
 public class Main {
     public static void main(String[] args) {
         int[] data = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-//        System.out.println(binarySearch(data, 10));
-        UserLinkedList<String> userLinkedList = new UserLinkedList<>();
-        userLinkedList.add(null);
-        userLinkedList.add("2");
-        userLinkedList.add("5");
-        userLinkedList.add("3");
-//        System.out.println(userLinkedList.size());
-//        System.out.println(userLinkedList.contains("2"));
-//        System.out.println(userLinkedList.contains(2));
-//        System.out.println(userLinkedList.contains(null));
-//        System.out.println(userLinkedList.remove("1"));
-//        userLinkedList.removeFirst();
-//        System.out.println(userLinkedList.remove("2"));
-//        System.out.println(userLinkedList.remove(null));
-//        System.out.println(userLinkedList.remove("1"));
-//        System.out.println(userLinkedList.size());
-//        System.out.println(userLinkedList.toString());
-//        System.out.println(userLinkedList.isEmpty());
-
+        System.out.println(binarySearch(data, 10));
 
         UserTreeSet<Integer> userTreeSet = new UserTreeSet<>();
         userTreeSet.add(15);

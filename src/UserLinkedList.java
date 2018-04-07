@@ -1,4 +1,3 @@
-import java.util.Iterator;
 
 public class UserLinkedList<T> {
     private int size = 0;
