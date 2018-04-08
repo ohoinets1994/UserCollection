@@ -1,5 +1,3 @@
-import java.util.LinkedList;
-import java.util.TreeSet;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,16 +18,7 @@ public class Main {
         userTreeSet.add(11);
         userTreeSet.add(10);
         System.out.println(userTreeSet.size());
-
-        System.out.println(userTreeSet.remove(15));
-//        System.out.println(userTreeSet.add(null));
-        System.out.println(userTreeSet.size());
-        System.out.println(userTreeSet.contains(9));
-//        System.out.println(userTreeSet.isEmpty());
-        System.out.println(userTreeSet.maxElement());
-        System.out.println(userTreeSet.minElement());
-
-
+        userTreeSet.print();
     }
 
     private static int binarySearch(int[] data, int element) {

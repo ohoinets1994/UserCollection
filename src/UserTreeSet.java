@@ -1,3 +1,4 @@
+
 public class UserTreeSet<T extends Comparable<T>> {
     private int size = 0;
     private Node<T> root;
@@ -73,17 +74,12 @@ public class UserTreeSet<T extends Comparable<T>> {
         if (element.compareTo(node.value) == 0) {
             if ((node.right == null && node.left != null) || (node.right == null)) {
                 node = node.left;
-////                System.out.println("--node--" + node);
-////                System.out.println("--node--" + node.value);
                 size--;
             } else if (node.right.left == null) {
                 Node<T> tmp = node.left;
                 node = node.right;
                 node.left = tmp;
                 size--;
-//                System.out.println("--node--" + node.value);
-//                System.out.println("--left--" + node.left.value);
-//                System.out.println("--right--" + node.right.value);
             } else {
                 Node<T> newNode = node.right;
                 Node<T> prev = node;
@@ -97,10 +93,6 @@ public class UserTreeSet<T extends Comparable<T>> {
 
                 newNode.left = node.left;
                 newNode.right = node.right;
-//                System.out.println("--node--" + newNode.value);
-//                System.out.println("--left--" + newNode.left.value);
-//                System.out.println("--right--" + newNode.right.value);
-//                System.out.println("--right--" + newNode.right.left.left.left);
                 size--;
                 return newNode;
             }
@@ -112,7 +104,17 @@ public class UserTreeSet<T extends Comparable<T>> {
     }
 
     public void print() {
+        if (root == null)
+            System.out.println("Your collection is empty!");
+        else printTree(root);
+    }
 
+    private void printTree(Node<T> root) {
+        if (root != null) {
+            printTree(root.left);
+            System.out.println(root.value);
+            printTree(root.right);
+        }
     }
 
     public T maxElement() {
