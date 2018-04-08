@@ -1,5 +1,6 @@
+import java.util.Iterator;
 
-public class UserLinkedList<T> {
+public class UserLinkedList<T> implements Iterable<T>{
     private int size = 0;
     private Node<T> first;
     private Node<T> last;
@@ -13,6 +14,29 @@ public class UserLinkedList<T> {
             return true;
         return false;
     }
+
+    private class MyIterator implements Iterator<T>{
+        private Node<T> current = first;
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public T next() {
+            T result = current.value;
+            current = current.next;
+            return result;
+        }
+
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new MyIterator();
+    }
+
 
     private static class Node<T> {
         T value;

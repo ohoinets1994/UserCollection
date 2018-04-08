@@ -49,7 +49,6 @@ public class UserLinkedListTest {
         userLinkedList2.add(2);
         userLinkedList2.add(3);
         assertEquals(true, userLinkedList2.remove(2));
-
     }
 
     @Test
