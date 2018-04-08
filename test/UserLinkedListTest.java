@@ -10,13 +10,12 @@ public class UserLinkedListTest {
         userLinkedList.add("a");
         userLinkedList.add("b");
         userLinkedList.add("c");
-        int expected = 3;
-        int actual = userLinkedList.size();
-        assertEquals(expected, actual);
+        assertEquals(3, userLinkedList.size());
         userLinkedList.remove("a");
         userLinkedList.remove("b");
         userLinkedList.remove("c");
         assertEquals(0, userLinkedList.size());
+
         UserLinkedList<String> userLinkedList2 = new UserLinkedList<>();
         assertEquals(0, userLinkedList2.size());
     }
