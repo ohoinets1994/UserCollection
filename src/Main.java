@@ -1,3 +1,4 @@
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,6 +22,32 @@ public class Main {
         userTreeSet.print();
     }
 
+//    Написать метод, который принимает на вход строку и подсчитывает кол-во уникальных символов в строке.
+//    * использовать структуру данных из Collection framework.
+    private static int countChars(String string) {
+        char[] chars = string.toCharArray();
+        Set<Character> characters = new HashSet<>();
+
+        for (char c : chars) {
+            characters.add(c);
+        }
+        return characters.size();
+    }
+
+//    Написать метод, который принимает на вход строку, и подсчитывает кол-во вхождений каждого из символов в строке.
+//    * использовать структуру данных из Collection framework.
+    private static Map<Character, Integer> numberOccurrences(String string) {
+        char[] chars = string.toCharArray();
+        Map<Character, Integer> map = new HashMap<>();
+
+        for (char c: chars) {
+            if (map.containsKey(c))
+                map.put(c, map.get(c) + 1);
+            else
+                map.put(c, 1);
+        }
+        return map;
+    }
     private static int binarySearch(int[] data, int element) {
         int index = -1;
         int first = 0;
