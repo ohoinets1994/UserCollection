@@ -28,7 +28,7 @@ public class UserHashMap<K, V> implements UserMap<K, V>{
 
         List<Node<K, V>> nodeList = table[index].getListNodes();
         for (Node<K, V> nodeFromNodeList : nodeList) {
-            if (keyExistButValueNew(nodeFromNodeList, newNode) || collision(nodeFromNodeList, newNode, nodeList))
+            if (collision(nodeFromNodeList, newNode, nodeList) /*|| keyExistButValueNew(nodeFromNodeList, newNode)*/)
                 return true;
         }
         return false;
@@ -48,23 +48,28 @@ public class UserHashMap<K, V> implements UserMap<K, V>{
 
     private boolean collision(Node<K, V> nodeFromNodeList, Node<K, V> newNode, List<Node<K, V>> nodes) {
         if (nodeFromNodeList.hashCode() == newNode.hashCode() &&
-                !Objects.equals(nodeFromNodeList.key, newNode.key) &&
-                !Objects.equals(nodeFromNodeList.value, newNode.value)) {
+                !Objects.equals(nodeFromNodeList.key, newNode.key)) {
 
             nodes.add(newNode);
             size++;
             return true;
-        }
-        return false;
-    }
+        } else if (nodeFromNodeList.hashCode() == newNode.hashCode() &&
+                Objects.equals(nodeFromNodeList.key, newNode.key)) {
 
-    private boolean keyExistButValueNew(Node<K, V> nodeFromNodeList, Node<K, V> newNode) {
-        if (nodeFromNodeList.key.equals(newNode.key) && !nodeFromNodeList.value.equals(newNode.value)) {
             nodeFromNodeList.value = newNode.value;
             return true;
         }
         return false;
     }
+
+//    private boolean keyExistButValueNew(Node<K, V> nodeFromNodeList, Node<K, V> newNode) {
+//        if (nodeFromNodeList.key.equals(newNode.key) && !nodeFromNodeList.value.equals(newNode.value)) {
+//            nodeFromNodeList.value = newNode.value;
+//            return true;
+//        }
+//        return false;
+//    }
+
     private boolean simplePut(int index, Node<K, V> newNode) {
         table[index] = new Node<>(null, null);
         table[index].getListNodes().add(newNode);
@@ -74,7 +79,7 @@ public class UserHashMap<K, V> implements UserMap<K, V>{
 
     @Override
     public V get(K key) {
-        int index = hash(key);
+        int index = key.hashCode() % table.length;
         if (index < table.length && table[index] != null) {
             List<Node<K, V>> list = table[index].getListNodes();
             for (Node<K, V> node : list) {
@@ -85,12 +90,6 @@ public class UserHashMap<K, V> implements UserMap<K, V>{
         return null;
     }
 
-    private int hash(K key) {
-        int hash = 31;
-        hash = hash * 17 + key.hashCode();
-        return hash % table.length;
-    }
-
     @Override
     public int size() {
         return size;
@@ -98,7 +97,6 @@ public class UserHashMap<K, V> implements UserMap<K, V>{
 
     private class Node<K, V> {
         private List<Node<K, V>> listNodes;
-        private int hash;
         private K key;
         private V value;
 
@@ -122,16 +120,12 @@ public class UserHashMap<K, V> implements UserMap<K, V>{
             if (o == null || this.getClass() != o.getClass()) return false;
             Node<K, V> node = (Node<K, V>) o;
             return (Objects.equals(key, node.key) &&
-                    Objects.equals(value, node.value) ||
-                    Objects.equals(hash, node.hashCode()));
+                    Objects.equals(value, node.value));
         }
 
         @Override
         public int hashCode() {
-            hash = 31;
-            hash = hash * 17 + key.hashCode();
-//            this.hash = this.hash * 17 + this.value.hashCode();
-            return hash;
+            return key.hashCode();
         }
     }
 }

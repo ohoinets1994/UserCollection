@@ -2,24 +2,37 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        int[] data = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        System.out.println(binarySearch(data, 10));
+//        int[] data = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+//        System.out.println(binarySearch(data, 10));
+//
+//        UserTreeSet<Integer> userTreeSet = new UserTreeSet<>();
+//        userTreeSet.add(15);
+//        userTreeSet.add(25);
+//        userTreeSet.add(42);
+//        userTreeSet.add(9);
+//        userTreeSet.add(2);
+//        userTreeSet.add(3);
+//        userTreeSet.add(1);
+//        userTreeSet.add(13);
+//        userTreeSet.add(14);
+//        userTreeSet.add(12);
+//        userTreeSet.add(11);
+//        userTreeSet.add(10);
+//        System.out.println(userTreeSet.size());
+//        userTreeSet.print();
 
-        UserTreeSet<Integer> userTreeSet = new UserTreeSet<>();
-        userTreeSet.add(15);
-        userTreeSet.add(25);
-        userTreeSet.add(42);
-        userTreeSet.add(9);
-        userTreeSet.add(2);
-        userTreeSet.add(3);
-        userTreeSet.add(1);
-        userTreeSet.add(13);
-        userTreeSet.add(14);
-        userTreeSet.add(12);
-        userTreeSet.add(11);
-        userTreeSet.add(10);
-        System.out.println(userTreeSet.size());
-        userTreeSet.print();
+        UserHashMap<String, String> userHashMap = new UserHashMap<>();
+        System.out.println(userHashMap.put("1", "sasha"));
+        System.out.println(userHashMap.put("2", "sasha2"));
+        System.out.println(userHashMap.put("3", "sasha3"));
+        System.out.println(userHashMap.put("4", "sasha4"));
+        System.out.println(userHashMap.put("5", "sasha5"));
+        System.out.println(userHashMap.put("6", "sasha3"));
+        System.out.println(userHashMap.size());
+        System.out.println(userHashMap.get("6"));
+
+        System.out.println();
+//        HashMap
     }
 
 //    Написать метод, который принимает на вход строку и подсчитывает кол-во уникальных символов в строке.
